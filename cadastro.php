@@ -5,12 +5,12 @@ $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
 $login = isset($_POST['login']) ? $_POST['login'] : '';
 $senha = isset($_POST['senha']) ? $_POST['senha'] : '';
 
-// Verifica se o nome de usuário já existe no banco de dados
-$verificaNome = "SELECT * FROM login WHERE nome = '$nome'";
-$result = mysqli_query($conexao, $verificaNome);
+// Verifica se o login já existe no banco de dados
+$verificaLogin = "SELECT * FROM login WHERE login = '$login'";
+$result = mysqli_query($conexao, $verificaLogin);
 
 if (mysqli_num_rows($result) > 0) {
-    echo "Este nome já está em uso. Por favor, escolha outro nome.";
+    echo "Este login já está em uso. Por favor, escolha outro login.";
 } else {
     $insert = "INSERT INTO login (nome, login, senha) VALUES ('$nome', '$login', '$senha')";
     $query = mysqli_query($conexao, $insert);
